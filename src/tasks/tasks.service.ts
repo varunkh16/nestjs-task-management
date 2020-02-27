@@ -35,7 +35,7 @@ export class TasksService {
     }
 
     updateTaskById(id: string, status: TaskStatus): Task {
-        let task: Task = this.tasks.find(task => task.id === id);
+        const task: Task = this.tasks.find(task => task.id === id);
         task.status = status;
         return task;
     }
