@@ -8,8 +8,12 @@ export class TasksService {
 
     private tasks: Task[] = [];
 
-    getAllTasks() {
+    getAllTasks(): Task[] {
         return this.tasks;
+    }
+
+    getTaskById(id: string): Task {
+        return this.tasks.find(task => task.id === id);
     }
 
     createTask(createTaskDTO: CreateTaskDTO): Task {
@@ -22,6 +26,17 @@ export class TasksService {
             status: TaskStatus.OPEN,
         };
         this.tasks.push(task);
+        return task;
+    }
+
+    deleteTaskById(id: string): Task[] {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+        return this.tasks;
+    }
+
+    updateTaskById(id: string, status: TaskStatus): Task {
+        let task: Task = this.tasks.find(task => task.id === id);
+        task.status = status;
         return task;
     }
 }
