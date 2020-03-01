@@ -4,4 +4,9 @@ export const TaskSchema = new mongoose.Schema({
     title: String,
     description: String,
     status: String,
+    user: {
+        username: String,
+        salt: String,
+        password: String,
+    },
 });
